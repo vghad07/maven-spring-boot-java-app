@@ -15,7 +15,7 @@ variables:
   webAppName: 'java-spring-boot'
 
 pool:
-  vmImage: 'default'
+  vmImage: 'linuxagent'
 
 stages:
   - stage: Build
