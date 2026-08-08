@@ -16,6 +16,7 @@ variables:
 
 pool:
   name: 'default'
+  vmImage: linuxagent
   
 stages:
   - stage: Build
