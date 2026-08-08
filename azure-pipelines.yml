@@ -15,7 +15,7 @@ variables:
   webAppName: 'java-spring-boot'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'linuxagent'
 stages:
   - stage: Build
     jobs: 
