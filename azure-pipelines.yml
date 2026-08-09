@@ -35,6 +35,6 @@ steps:
     checkStyleRunAnalysis: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target/gs-spring-boot-0.1.0.jar'
     ArtifactName: 'drop'
     publishLocation: 'Container'
