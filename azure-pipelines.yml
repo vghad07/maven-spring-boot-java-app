@@ -35,6 +35,6 @@ steps:
     checkStyleRunAnalysis: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target/webapp/*.war'
     ArtifactName: 'drop'
     publishLocation: 'Container'
