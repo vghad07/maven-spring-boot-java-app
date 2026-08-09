@@ -15,25 +15,26 @@ variables:
   webAppName: 'java-spring-boot'
 
 pool:
-  name: 'default'
-  vmImage: linuxagent
+  vmImage: ubuntu-latest
   
-stages:
-  - stage: Build
-    jobs: 
-    - job: Build
-      steps:
-      - task: Maven@4
-        inputs:
-          azureSubscription: 'Azure subscription 1(87d973c5-1ffd-45e0-8435-6f52ef9a36d9)'
-          mavenPomFile: './app/pom.xml'
-          goals: 'package -DskipTests'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          mavenVersionOption: 'Default'
-          mavenAuthenticateFeed: false
-          effectivePomSkip: false
-          sonarQubeRunAnalysis: false
-          sqMavenPluginVersionChoice: 'latest'
-          checkStyleRunAnalysis: true
+steps:
+- task: Maven@4
+  displayName: 'Build Stage'
+  inputs:
+    azureSubscription: 'Azure subscription 1(87d973c5-1ffd-45e0-8435-6f52ef9a36d9)'
+    mavenPomFile: './app/pom.xml'
+    goals: 'package -DskipTests'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+    sqMavenPluginVersionChoice: 'latest'
+    checkStyleRunAnalysis: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
